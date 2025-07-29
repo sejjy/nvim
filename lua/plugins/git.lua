@@ -7,11 +7,11 @@ return {
 		on_attach = function(bufnr)
 			local gitsigns = require("gitsigns")
 			local function hdesc(desc)
-				return { desc = "git [h]unk " .. desc, buffer = bufnr }
+				return { desc = "Git: [h]unk " .. desc, buffer = bufnr }
 			end
 
 			local function tdesc(desc)
-				return { desc = "[t]oggle " .. desc, buffer = bufnr }
+				return { desc = "Git: [t]oggle " .. desc, buffer = bufnr }
 			end
 
 			-- Navigation
@@ -50,7 +50,7 @@ return {
 
 			vim.keymap.set("n", "<leader>hb", function()
 				gitsigns.blame_line({ full = true })
-			end, hdesc("[b]lame full"))
+			end, hdesc("[b]lame FULL"))
 
 			vim.keymap.set("n", "<leader>hd", gitsigns.diffthis, hdesc("[d]iff"))
 			vim.keymap.set("n", "<leader>hD", function()
@@ -59,7 +59,7 @@ return {
 
 			vim.keymap.set("n", "<leader>hQ", function()
 				gitsigns.setqflist("all")
-			end, hdesc("[Q]uickfix all hunks"))
+			end, hdesc("[Q]uickfix ALL hunks"))
 
 			vim.keymap.set("n", "<leader>hq", gitsigns.setqflist, hdesc("[q]uickfix hunks"))
 

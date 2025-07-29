@@ -20,7 +20,7 @@ return {
 		{ "<Leader>s", group = "[s]earch" },
 		{ "<Leader>t", group = "[t]oggle" },
 		{ "<Leader>w", group = "[w]orkspace" },
-		{ "<Leader>h", group = "git [h]unk", mode = { "n", "v" } },
+		{ "<Leader>h", group = "[h]unk", mode = { "n", "v" } },
 	},
 
 	opts = {
