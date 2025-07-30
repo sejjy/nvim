@@ -2,11 +2,6 @@ return {
 	"nvim-lualine/lualine.nvim",
 
 	config = function()
-		--- @param trunc_width number trunctates component when screen width is less then trunc_width
-		--- @param trunc_len number truncates component to trunc_len number of chars
-		--- @param hide_width number hides component when window width is smaller then hide_width
-		--- @param no_ellipsis boolean whether to disable adding "..." at end after truncation
-		--- return function that can format the component accordingly
 		local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
 			return function(str)
 				local win_width = vim.fn.winwidth(0)
@@ -21,32 +16,38 @@ return {
 
 		local mocha = require("catppuccin.palettes").get_palette("mocha")
 
+		local inner = "·"
+		local iconl = ""
+		local iconr = ""
+		local trfmt = trunc(0, 0, 75, true)
+		local spinner = { "|", "/", "—", "\\" }
+
 		require("lualine").setup({
-			-- options = { component_separators = "" },
 			options = {
 				-- globalstatus = true,
-				component_separators = "· ",
-				section_separators = { left = "", right = "" },
+				component_separators = inner .. " ",
+				section_separators = { left = iconr, right = iconl },
+
 				disabled_filetypes = {
-					statusline = {
-						"neo-tree",
-						"aerial",
-					},
+					statusline = { "neo-tree" },
 				},
 			},
 
 			sections = {
 				lualine_a = {
-					{ "mode", fmt = trunc(75, 1, 0, true), separator = { left = "", right = " " } },
+					{
+						"mode",
+						separator = { left = iconl, right = iconr .. " " },
+						fmt = trunc(75, 1, 0, true),
+					},
 				},
 
 				lualine_b = {
-					-- { "b:gitsigns_head", icon = "󰘬" },
 					{
 						"branch",
 						icon = "󰘬",
 						color = { fg = mocha.text },
-						separator = { left = "", right = " " },
+						separator = { left = "", right = iconr .. " " },
 						padding = { left = 0, right = 1 },
 					},
 				},
@@ -54,56 +55,68 @@ return {
 				lualine_c = {
 					{
 						"diff",
-						fmt = trunc(0, 0, 75, true),
-						symbols = { added = " ", modified = " ", removed = " " },
-						diff_color = {
-							modified = { fg = mocha.blue }, -- Changes the diff's modified color
-						},
 						padding = { left = 0, right = 1 },
+						fmt = trfmt,
+
+						symbols = {
+							added = " ",
+							removed = " ",
+							modified = " ",
+						},
+
+						diff_color = {
+							modified = { fg = mocha.blue },
+						},
 					},
 					{
 						"filetype",
-						fmt = trunc(0, 0, 75, true),
 						icon_only = true,
 						separator = "",
 						padding = { left = 0, right = 0 },
+						fmt = trfmt,
 					},
 					{
 						"filename",
-						fmt = trunc(50, 18, 0, false),
 						padding = { left = 0, right = 0 },
+						fmt = trunc(50, 18, 0, false),
+
 						symbols = {
-							modified = "[+]", -- Text to show when the file is modified.
-							readonly = "[-]", -- Text to show when the file is non-modifiable or readonly.
-							unnamed = "[No Name]", -- Text to show for unnamed buffers.
-							newfile = "[New]", -- Text to show for newly created file before first write
+							modified = "[+]", -- file is modified.
+							readonly = "[-]", -- file is non-modifiable or readonly.
+							unnamed = "[No Name]", -- unnamed buffers.
+							newfile = "[New]", -- newly created file before first write
 						},
 					},
 				},
 
 				lualine_x = {
-					{ "diagnostics", separator = "·" },
+					{
+						"diagnostics",
+						separator = inner,
+					},
 					{
 						"lsp_status",
-						fmt = trunc(0, 0, 75, true),
 						icon = "",
-						symbols = {
-							spinner = { "|", "/", "—", "\\" },
-							done = "",
-							separator = " · ",
-						},
-						padding = { left = 0, right = 1 },
 						separator = "",
+						padding = { left = 0, right = 1 },
+						symbols = { spinner = spinner, done = "", separator = " " .. inner .. " " },
+						fmt = trfmt,
 					},
 				},
 
-				-- lualine_y = { { "progress", fmt = trunc(0, 0, 75, true) } },
 				lualine_y = {
-					{ "filesize", color = { fg = mocha.text }, fmt = trunc(0, 0, 75, true) },
+					{
+						"filesize",
+						color = { fg = mocha.text },
+						fmt = trfmt,
+					},
 				},
 
 				lualine_z = {
-					{ "location", separator = { left = "", right = "" } },
+					{
+						"location",
+						separator = { left = iconl, right = iconr },
+					},
 				},
 			},
 
@@ -114,22 +127,14 @@ return {
 				lualine_x = {
 					{
 						"lsp_status",
-						fmt = trunc(0, 0, 75, true),
 						icon = "",
-						symbols = {
-							spinner = { "|", "/", "—", "\\" },
-							done = "",
-							separator = " ",
-						},
+						symbols = { spinner = spinner, done = "", separator = " " },
+						fmt = trfmt,
 					},
 				},
 				lualine_y = {},
 				lualine_z = {},
 			},
 		})
-
-		-- fix outer separators' bg color
-		vim.api.nvim_set_hl(0, "StatusLine", { reverse = false })
-		vim.api.nvim_set_hl(0, "StatusLineNC", { reverse = false })
 	end,
 }

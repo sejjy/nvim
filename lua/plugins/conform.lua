@@ -14,9 +14,9 @@ return {
 		},
 	},
 
-	-- This will provide type hinting with LuaLS
+	-- this will provide type hinting with LuaLS
 	opts = {
-		-- Define your formatters
+		-- define your formatters
 		formatters_by_ft = {
 			c = { "clang-format" },
 			css = { "prettierd" },
@@ -25,13 +25,16 @@ return {
 			lua = { "stylua" },
 			python = { "ruff" },
 		},
-		-- Set default options
+
+		-- set default options
 		default_format_opts = {
 			lsp_format = "fallback",
 		},
-		-- Set up format-on-save
+
+		-- set up format-on-save
 		-- format_on_save = { timeout_ms = 500 },
-		-- Customize formatters
+
+		-- customize formatters
 		formatters = {
 			shfmt = {
 				prepend_args = { "-i", "2" },
@@ -40,7 +43,7 @@ return {
 	},
 
 	init = function()
-		-- If you want the formatexpr, here is the place to set it
+		-- if you want the formatexpr, here is the place to set it
 		vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 	end,
 }

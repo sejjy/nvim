@@ -14,7 +14,7 @@ return {
 				[".bashrc"] = { glyph = "" },
 				[".zshrc"] = { glyph = "" },
 
-				-- web dev
+				-- common web development files
 				["artisan"] = { glyph = "󰫐", hl = "MiniIconsRed" },
 				["composer.lock"] = { glyph = "󰘦", hl = "MiniIconsYellow" },
 				["eslint.config.js"] = { glyph = "󰱺", hl = "MiniIconsPurple" },

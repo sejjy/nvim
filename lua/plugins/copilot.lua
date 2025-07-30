@@ -23,6 +23,7 @@ return {
 				enabled = true,
 				-- auto_trigger = true,
 				debounce = 50, -- faster suggestions
+
 				-- defaults
 				keymap = {
 					accept = "<M-y>",

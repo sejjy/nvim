@@ -27,7 +27,6 @@ return {
 			end, { buffer = bufnr })
 
 			vim.cmd(string.format("noautocmd lua vim.api.nvim_set_current_win(%s)", winid))
-			-- api.nvim_set_current_win(winid)
 		end
 
 		local actions = require("telescope.actions")
