@@ -30,4 +30,4 @@ local function toggle_diagnostics()
 	})
 end
 
-vim.keymap.set("n", "<Leader>td", toggle_diagnostics, { desc = "[t]oggle [d]iagnostics" })
+vim.keymap.set("n", "<Leader>td", toggle_diagnostics, { desc = "toggle [d]iagnostics" })

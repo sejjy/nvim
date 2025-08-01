@@ -66,7 +66,7 @@ return {
 
 		local builtin = require("telescope.builtin")
 		local function tdesc(desc)
-			return { desc = "[s]earch " .. desc }
+			return { desc = "search " .. desc }
 		end
 
 		vim.keymap.set("n", "<Leader>sh", builtin.help_tags, tdesc("[h]elp"))
@@ -77,7 +77,7 @@ return {
 		vim.keymap.set("n", "<Leader>sg", builtin.live_grep, tdesc("by [g]rep"))
 		vim.keymap.set("n", "<Leader>sd", builtin.diagnostics, tdesc("[d]iagnostics"))
 		vim.keymap.set("n", "<Leader>sr", builtin.resume, tdesc("[r]esume"))
-		vim.keymap.set("n", "<Leader>s.", builtin.oldfiles, tdesc("[.] all recent files"))
+		vim.keymap.set("n", "<Leader>s.", builtin.oldfiles, tdesc("all recent files"))
 
 		vim.keymap.set("n", "<Leader><leader>", builtin.buffers, { desc = "find buffers" })
 
@@ -93,10 +93,10 @@ return {
 				grep_open_files = true,
 				prompt_title = "Live Grep in Open Files",
 			})
-		end, { desc = "[s]earch [/] in open files" })
+		end, { desc = "search in open files" })
 
 		vim.keymap.set("n", "<Leader>sn", function()
 			builtin.find_files({ cwd = vim.fn.stdpath("config") })
-		end, { desc = "[s]earch [n]eovim files" })
+		end, { desc = "search [n]eovim files" })
 	end,
 }

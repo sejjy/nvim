@@ -7,11 +7,11 @@ return {
 		on_attach = function(bufnr)
 			local gitsigns = require("gitsigns")
 			local function hdesc(desc)
-				return { desc = "Git: [h]unk " .. desc, buffer = bufnr }
+				return { desc = "Git: " .. desc, buffer = bufnr }
 			end
 
 			local function tdesc(desc)
-				return { desc = "Git: [t]oggle " .. desc, buffer = bufnr }
+				return { desc = "Git: toggle " .. desc, buffer = bufnr }
 			end
 
 			-- navigation
@@ -69,7 +69,7 @@ return {
 			vim.keymap.set("n", "<Leader>tw", gitsigns.toggle_word_diff, tdesc("[w]ord diff"))
 
 			-- text object
-			vim.keymap.set({ "o", "x" }, "ih", gitsigns.select_hunk, { desc = "[i]nner [h]unk", buffer = bufnr })
+			vim.keymap.set({ "o", "x" }, "ih", gitsigns.select_hunk, { desc = "inner [h]unk", buffer = bufnr })
 		end,
 	},
 }

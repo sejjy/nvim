@@ -90,7 +90,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- lsp keymaps
 		local builtin = require("telescope.builtin")
 		local function gdesc(desc)
-			return { desc = "LSP: [g]oto " .. desc }
+			return { desc = "LSP: goto " .. desc }
 		end
 		local function ldesc(desc)
 			return { desc = "LSP: " .. desc }
@@ -102,23 +102,23 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "gr", builtin.lsp_references, gdesc("[r]eferences"))
 		vim.keymap.set("n", "gI", builtin.lsp_implementations, gdesc("[I]mplementation"))
 
-		vim.keymap.set("n", "<Leader>rn", vim.lsp.buf.rename, ldesc("[r]e[n]ame"))
+		vim.keymap.set("n", "<Leader>rn", vim.lsp.buf.rename, ldesc("re[n]ame"))
 		vim.keymap.set("n", "<Leader>D", builtin.lsp_type_definitions, ldesc("type [D]efinition"))
-		vim.keymap.set("n", "<Leader>ds", builtin.lsp_document_symbols, ldesc("[d]ocument [s]ymbols"))
-		vim.keymap.set("n", "<Leader>ws", builtin.lsp_dynamic_workspace_symbols, ldesc("[w]orkspace [s]ymbols"))
+		vim.keymap.set("n", "<Leader>ds", builtin.lsp_document_symbols, ldesc("document [s]ymbols"))
+		vim.keymap.set("n", "<Leader>ws", builtin.lsp_dynamic_workspace_symbols, ldesc("workspace [s]ymbols"))
 
 		vim.keymap.set("n", "<Leader>th", function()
 			local lsp_hint = { bufnr = bufnum }
 			vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(lsp_hint), lsp_hint)
-		end, ldesc("[t]oggle inlay [h]ints"))
+		end, ldesc("toggle inlay [h]ints"))
 
-		vim.keymap.set({ "n", "x" }, "<Leader>ca", vim.lsp.buf.code_action, ldesc("[c]ode [a]ction"))
+		vim.keymap.set({ "n", "x" }, "<Leader>ca", vim.lsp.buf.code_action, ldesc("code [a]ction"))
 		vim.keymap.set("n", "K", vim.lsp.buf.hover)
 	end,
 })
 
 -- fix for https://github.com/folke/lazy.nvim/issues/1951
-local lazy_group = vim.api.nvim_create_augroup("LazyNvimFix", { clear = true })
+local lazy_group = vim.api.nvim_create_augroup("LazyGroup", { clear = true })
 
 vim.api.nvim_create_autocmd("FileType", {
 	group = lazy_group,
