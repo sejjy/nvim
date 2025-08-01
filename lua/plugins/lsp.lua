@@ -46,7 +46,12 @@ return {
 						},
 						workspace = {
 							checkThirdParty = false,
-							library = { vim.env.VIMRUNTIME, "${3rd}/luv/library", "${3rd}/busted/library" },
+							library = {
+								vim.env.VIMRUNTIME,
+								"${3rd}/busted/library",
+								"${3rd}/love2d/library",
+								"${3rd}/luv/library",
+							},
 						},
 					},
 				},
