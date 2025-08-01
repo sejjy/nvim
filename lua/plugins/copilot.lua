@@ -9,13 +9,12 @@ return {
 				enabled = false,
 				auto_refresh = false,
 
-				-- defaults for ref
 				keymap = {
 					jump_prev = "[[",
 					jump_next = "]]",
-					accept = "<CR>",
+					accept = "<Enter>",
 					refresh = "gr",
-					open = "<M-CR>",
+					open = "<A-Enter>",
 				},
 			},
 
@@ -24,14 +23,13 @@ return {
 				-- auto_trigger = true,
 				debounce = 50, -- faster suggestions
 
-				-- defaults
 				keymap = {
-					accept = "<M-y>",
+					accept = "<A-y>",
 					accept_word = false,
 					accept_line = false,
-					next = "<M-n>",
-					prev = "<M-p>",
-					dismiss = "<M-d>",
+					next = "<A-n>",
+					prev = "<A-p>",
+					dismiss = "<A-d>",
 				},
 			},
 

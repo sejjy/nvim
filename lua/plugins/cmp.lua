@@ -68,9 +68,11 @@ return {
 
 			mapping = cmp.mapping.preset.insert({
 				["<C-Space>"] = cmp.mapping.complete(), -- manually trigger completion
+
 				-- disable arrow keys
 				["<Up>"] = cmp.config.disable,
 				["<Down>"] = cmp.config.disable,
+
 				-- selection
 				["<C-u>"] = cmp.mapping.scroll_docs(-4),
 				["<C-d>"] = cmp.mapping.scroll_docs(4),
