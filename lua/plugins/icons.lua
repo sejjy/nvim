@@ -2,7 +2,13 @@ return {
 	"echasnovski/mini.icons",
 
 	config = function()
-		local blue = "MiniIconsBlue"
+		local bash = ""
+		local css = ""
+		local gear = ""
+		local info = "󰋽"
+		local license = "󰿃"
+		local secret = ""
+
 		local cyan = "MiniIconsCyan"
 		local green = "MiniIconsGreen"
 		local orange = "MiniIconsOrange"
@@ -13,12 +19,12 @@ return {
 		require("mini.icons").setup({
 			file = {
 				-- hidden
-				[".bashrc"] = { glyph = "" },
-				[".env"] = { glyph = "" },
-				[".env.example"] = { glyph = "" },
-				[".htaccess"] = { glyph = "" },
+				[".bashrc"] = { glyph = gear },
+				[".env"] = { glyph = secret },
+				[".env.example"] = { glyph = secret },
+				[".htaccess"] = { glyph = gear },
 				[".prettierrc"] = { glyph = "" },
-				[".zshrc"] = { glyph = "" },
+				[".zshrc"] = { glyph = gear },
 
 				artisan = { glyph = "󰫐", hl = red },
 				["composer.lock"] = { glyph = "󰘦", hl = yellow },
@@ -26,35 +32,35 @@ return {
 				["favicon.ico"] = { glyph = "", hl = yellow },
 				["init.lua"] = { glyph = "" },
 
-				LICENSE = { glyph = "󰿃", hl = orange },
-				["LICENSE.md"] = { glyph = "󰿃", hl = orange },
-				["LICENSE.txt"] = { glyph = "󰿃", hl = orange },
+				LICENSE = { glyph = license, hl = orange },
+				["LICENSE.md"] = { glyph = license, hl = orange },
+				["LICENSE.txt"] = { glyph = license, hl = orange },
 
 				["package.json"] = { glyph = "󰎙", hl = green },
 				["package-lock.json"] = { glyph = "", hl = red },
 
-				README = { glyph = "󰋽", hl = cyan },
-				["README.md"] = { glyph = "󰋽", hl = cyan },
-				["README.txt"] = { glyph = "󰋽", hl = cyan },
+				README = { glyph = info, hl = cyan },
+				["README.md"] = { glyph = info, hl = cyan },
+				["README.txt"] = { glyph = info, hl = cyan },
 
 				["robots.txt"] = { glyph = "󱚠", hl = purple },
-				["tsconfig.json"] = { glyph = "󰛦", hl = blue },
+				["tsconfig.json"] = { glyph = "󰛦", hl = "MiniIconsBlue" },
 				["vite.config.ts"] = { glyph = "", hl = purple },
 			},
 
 			filetype = {
-				awk = { glyph = "", hl = green },
-				bash = { glyph = "", hl = green },
-				conf = { glyph = "" },
-				config = { glyph = "" },
-				css = { glyph = "", hl = purple },
+				awk = { glyph = bash, hl = green },
+				bash = { glyph = bash, hl = green },
+				conf = { glyph = gear },
+				config = { glyph = gear },
+				css = { glyph = css, hl = purple },
 				csv = { glyph = "󱎏", hl = green },
-				editorconfig = { glyph = "" },
+				editorconfig = { glyph = gear },
 				html = { glyph = "󰗀" },
-				rasi = { glyph = "", hl = purple },
-				sh = { glyph = "", hl = green },
-				tmux = { glyph = "" },
-				zsh = { glyph = "", hl = green },
+				rasi = { glyph = css, hl = purple },
+				sh = { glyph = bash, hl = green },
+				tmux = { glyph = gear },
+				zsh = { glyph = bash, hl = green },
 			},
 		})
 
