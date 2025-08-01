@@ -59,9 +59,9 @@ return {
 						fmt = trfmt,
 
 						symbols = {
-							added = " ",
-							removed = " ",
-							modified = " ",
+							added = "+",
+							removed = "-",
+							modified = "~",
 						},
 
 						diff_color = {
