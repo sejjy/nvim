@@ -2,47 +2,59 @@ return {
 	"echasnovski/mini.icons",
 
 	config = function()
+		local blue = "MiniIconsBlue"
+		local cyan = "MiniIconsCyan"
+		local green = "MiniIconsGreen"
+		local orange = "MiniIconsOrange"
+		local purple = "MiniIconsPurple"
+		local red = "MiniIconsRed"
+		local yellow = "MiniIconsYellow"
+
 		require("mini.icons").setup({
 			file = {
-				["init.lua"] = { glyph = "" },
-				["LICENSE"] = { glyph = "󰿃", hl = "MiniIconsOrange" },
-				["LICENSE.md"] = { glyph = "󰿃", hl = "MiniIconsOrange" },
-				["LICENSE.txt"] = { glyph = "󰿃", hl = "MiniIconsOrange" },
-				["README"] = { glyph = "󰋽", hl = "MiniIconsCyan" },
-				["README.md"] = { glyph = "󰋽", hl = "MiniIconsCyan" },
-				["README.txt"] = { glyph = "󰋽", hl = "MiniIconsCyan" },
+				-- hidden
 				[".bashrc"] = { glyph = "" },
-				[".zshrc"] = { glyph = "" },
-
-				-- common web development files
-				["artisan"] = { glyph = "󰫐", hl = "MiniIconsRed" },
-				["composer.lock"] = { glyph = "󰘦", hl = "MiniIconsYellow" },
-				["eslint.config.js"] = { glyph = "󰱺", hl = "MiniIconsPurple" },
-				["favicon.ico"] = { glyph = "", hl = "MiniIconsYellow" },
-				[".htaccess"] = { glyph = "" },
-				["package.json"] = { glyph = "󰎙", hl = "MiniIconsGreen" },
-				["package-lock.json"] = { glyph = "", hl = "MiniIconsRed" },
-				["robots.txt"] = { glyph = "󱚠", hl = "MiniIconsPurple" },
-				["tsconfig.json"] = { glyph = "󰛦", hl = "MiniIconsBlue" },
-				["vite.config.ts"] = { glyph = "", hl = "MiniIconsPurple" },
 				[".env"] = { glyph = "" },
 				[".env.example"] = { glyph = "" },
-				[".prettierrc"] = { glyph = "", hl = "MiniIconsOrange" },
+				[".htaccess"] = { glyph = "" },
+				[".prettierrc"] = { glyph = "" },
+				[".zshrc"] = { glyph = "" },
+
+				artisan = { glyph = "󰫐", hl = red },
+				["composer.lock"] = { glyph = "󰘦", hl = yellow },
+				["eslint.config.js"] = { glyph = "󰱺", hl = purple },
+				["favicon.ico"] = { glyph = "", hl = yellow },
+				["init.lua"] = { glyph = "" },
+
+				LICENSE = { glyph = "󰿃", hl = orange },
+				["LICENSE.md"] = { glyph = "󰿃", hl = orange },
+				["LICENSE.txt"] = { glyph = "󰿃", hl = orange },
+
+				["package.json"] = { glyph = "󰎙", hl = green },
+				["package-lock.json"] = { glyph = "", hl = red },
+
+				README = { glyph = "󰋽", hl = cyan },
+				["README.md"] = { glyph = "󰋽", hl = cyan },
+				["README.txt"] = { glyph = "󰋽", hl = cyan },
+
+				["robots.txt"] = { glyph = "󱚠", hl = purple },
+				["tsconfig.json"] = { glyph = "󰛦", hl = blue },
+				["vite.config.ts"] = { glyph = "", hl = purple },
 			},
 
 			filetype = {
-				["awk"] = { glyph = "", hl = "MiniIconsGreen" },
-				["bash"] = { glyph = "", hl = "MiniIconsGreen" },
-				["conf"] = { glyph = "" },
-				["config"] = { glyph = "" },
-				["css"] = { glyph = "", hl = "MiniIconsPurple" },
-				["csv"] = { glyph = "󱎏", hl = "MiniIconsGreen" },
-				["editorconfig"] = { glyph = "" },
-				["html"] = { glyph = "󰗀" },
-				["rasi"] = { glyph = "", hl = "MiniIconsPurple" },
-				["sh"] = { glyph = "", hl = "MiniIconsGreen" },
-				["tmux"] = { glyph = "" },
-				["zsh"] = { glyph = "", hl = "MiniIconsGreen" },
+				awk = { glyph = "", hl = green },
+				bash = { glyph = "", hl = green },
+				conf = { glyph = "" },
+				config = { glyph = "" },
+				css = { glyph = "", hl = purple },
+				csv = { glyph = "󱎏", hl = green },
+				editorconfig = { glyph = "" },
+				html = { glyph = "󰗀" },
+				rasi = { glyph = "", hl = purple },
+				sh = { glyph = "", hl = green },
+				tmux = { glyph = "" },
+				zsh = { glyph = "", hl = green },
 			},
 		})
 
