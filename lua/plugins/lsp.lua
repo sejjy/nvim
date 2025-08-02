@@ -4,11 +4,11 @@ return {
 	dependencies = {
 		"mason-org/mason.nvim",
 		"mason-org/mason-lspconfig.nvim",
-		-- "WhoIsSethDaniel/mason-tool-installer.nvim",
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
 
 	config = function()
-		local packages = {
+		local mason_servers = {
 			"bashls",
 			"clangd",
 			"cssls",
@@ -18,8 +18,9 @@ return {
 			"lua_ls",
 			"tailwindcss",
 			"ts_ls",
+		}
 
-			-- tools
+		local mason_tools = {
 			"clang-format",
 			"eslint_d",
 			"prettierd",
@@ -77,7 +78,11 @@ return {
 		})
 
 		require("mason-lspconfig").setup({
-			ensure_installed = packages,
+			ensure_installed = mason_servers,
+		})
+
+		require("mason-tool-installer").setup({
+			ensure_installed = mason_tools,
 		})
 
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
