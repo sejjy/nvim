@@ -4,11 +4,11 @@ return {
 	dependencies = {
 		"mason-org/mason.nvim",
 		"mason-org/mason-lspconfig.nvim",
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		-- "WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
 
 	config = function()
-		local mason_servers = {
+		local packages = {
 			"bashls",
 			"clangd",
 			"cssls",
@@ -18,9 +18,8 @@ return {
 			"lua_ls",
 			"tailwindcss",
 			"ts_ls",
-		}
 
-		local mason_tools = {
+			-- tools
 			"clang-format",
 			"eslint_d",
 			"prettierd",
@@ -77,21 +76,17 @@ return {
 			},
 		})
 
+		require("mason-lspconfig").setup({
+			ensure_installed = packages,
+		})
+
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-
-		require("mason-lspconfig").setup({
-			ensure_installed = mason_servers,
-		})
 
 		-- 0.11 fix
 		for server, srv in pairs(servers) do
 			srv.capabilities = vim.tbl_deep_extend("force", {}, capabilities, srv.capabilities or {})
 			vim.lsp.config(server, srv)
 		end
-
-		require("mason-tool-installer").setup({
-			ensure_installed = mason_tools,
-		})
 	end,
 }
