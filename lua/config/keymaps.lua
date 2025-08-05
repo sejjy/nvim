@@ -5,8 +5,8 @@ vim.keymap.set("n", "<Left>", "<Nop>")
 vim.keymap.set("n", "<Right>", "<Nop>")
 
 -- switch buffers
-vim.keymap.set("n", "<Leader>j", ":bnext<Enter>", { desc = "next buffer" })
-vim.keymap.set("n", "<Leader>k", ":bprevious<Enter>", { desc = "previous buffer" })
+vim.keymap.set("n", "<A-n>", ":bnext<Enter>")
+vim.keymap.set("n", "<A-p>", ":bprevious<Enter>")
 
 -- switch windows
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>")

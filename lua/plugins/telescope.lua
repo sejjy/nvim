@@ -34,6 +34,17 @@ return {
 
 		require("telescope").setup({
 			defaults = {
+				-- aesthetic suggestions #128
+				get_status_text = function(self)
+					local count = (self.stats.processed or 0) - (self.stats.filtered or 0)
+					local total = self.stats.processed or 0
+					return string.format(" %d/%d ", count, total)
+				end,
+
+				prompt_prefix = " > ",
+				selection_caret = " > ",
+				entry_prefix = "   ",
+
 				borderchars = borders,
 				mappings = {
 					i = {
@@ -55,7 +66,10 @@ return {
 
 			extensions = {
 				["ui-select"] = {
-					require("telescope.themes").get_dropdown({}),
+					require("telescope.themes").get_dropdown({
+						borderchars = borders,
+						prompt_title = "Code Actions",
+					}),
 				},
 			},
 		})
@@ -77,26 +91,27 @@ return {
 		vim.keymap.set("n", "<Leader>sg", builtin.live_grep, tdesc("by [g]rep"))
 		vim.keymap.set("n", "<Leader>sd", builtin.diagnostics, tdesc("[d]iagnostics"))
 		vim.keymap.set("n", "<Leader>sr", builtin.resume, tdesc("[r]esume"))
-		vim.keymap.set("n", "<Leader>s.", builtin.oldfiles, tdesc("all recent files"))
+		vim.keymap.set("n", "<Leader>s.", builtin.oldfiles, tdesc("recent files"))
 
-		vim.keymap.set("n", "<Leader><leader>", builtin.buffers, { desc = "find buffers" })
+		vim.keymap.set("n", "<Leader><leader>", builtin.buffers, tdesc("open buffers"))
 
 		vim.keymap.set("n", "<Leader>/", function()
 			builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 				previewer = false,
 				borderchars = borders,
+				prompt_title = "Fuzzy Find in Buffer",
 			}))
-		end, { desc = "fuzzy search in buffer" })
+		end, tdesc("in buffer"))
 
 		vim.keymap.set("n", "<Leader>s/", function()
 			builtin.live_grep({
 				grep_open_files = true,
-				prompt_title = "Live Grep in Open Files",
+				prompt_title = "Live Grep in Open Buffers",
 			})
-		end, { desc = "search in open files" })
+		end, tdesc("in open buffers"))
 
 		vim.keymap.set("n", "<Leader>sn", function()
 			builtin.find_files({ cwd = vim.fn.stdpath("config") })
-		end, { desc = "search [n]eovim files" })
+		end, tdesc("[n]eovim files"))
 	end,
 }
