@@ -113,7 +113,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end, ldesc("toggle inlay [h]ints"))
 
 		vim.keymap.set({ "n", "x" }, "<Leader>ca", vim.lsp.buf.code_action, ldesc("code [a]ction"))
-		vim.keymap.set("n", "K", vim.lsp.buf.hover)
+		vim.keymap.set("n", "K", vim.lsp.buf.hover, { silent = true })
 	end,
 })
 

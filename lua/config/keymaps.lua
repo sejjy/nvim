@@ -54,9 +54,9 @@ vim.keymap.set("n", "<Leader>nf", ":!npm run format<Enter>", { silent = true, de
 -- `chmod +x`
 vim.keymap.set("n", "<Leader>x", ":!chmod +x %<Enter>", { silent = true, desc = "chmod +[x]" })
 
-vim.keymap.set("n", "+", "<C-a>") -- increment
-vim.keymap.set("n", "-", "<C-x>") -- decrement
-vim.keymap.set("n", "J", "mzJ`z") -- join without moving cursor
+vim.keymap.set({ "n", "v" }, "+", "<C-a>") -- increment
+vim.keymap.set({ "n", "v" }, "-", "<C-x>") -- decrement
+vim.keymap.set({ "n", "v" }, "J", "mzJ`z") -- join without moving cursor
 
 -- goto opening pair
 vim.keymap.set({ "n", "x" }, ")", function()
