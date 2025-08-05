@@ -26,7 +26,10 @@ return {
 	opts = {
 		delay = 0,
 
-		win = { border = "single" },
+		win = {
+			no_overlap = false,
+			border = "single",
+		},
 
 		icons = {
 			breadcrumb = "+",
