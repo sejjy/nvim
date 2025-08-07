@@ -3,11 +3,11 @@ return {
 		"christoomey/vim-tmux-navigator",
 
 		keys = {
-			{ "<C-h>", ":<C-U>TmuxNavigateLeft<Enter>" },
-			{ "<C-j>", ":<C-U>TmuxNavigateDown<Enter>" },
-			{ "<C-k>", ":<C-U>TmuxNavigateUp<Enter>" },
-			{ "<C-l>", ":<C-U>TmuxNavigateRight<Enter>" },
-			{ "<C-\\>", ":<C-U>TmuxNavigatePrevious<Enter>" },
+			{ "<C-h>", ":<C-u>TmuxNavigateLeft<Enter>" },
+			{ "<C-j>", ":<C-u>TmuxNavigateDown<Enter>" },
+			{ "<C-k>", ":<C-u>TmuxNavigateUp<Enter>" },
+			{ "<C-l>", ":<C-u>TmuxNavigateRight<Enter>" },
+			{ "<C-\\>", ":<C-u>TmuxNavigatePrevious<Enter>" },
 		},
 	},
 

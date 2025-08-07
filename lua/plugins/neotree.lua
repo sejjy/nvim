@@ -6,7 +6,7 @@ return {
 	dependencies = { "MunifTanjim/nui.nvim" },
 
 	keys = {
-		{ "<A-e>", ":Neotree reveal<Enter>", desc = "[e]xplorer", silent = true },
+		{ "<A-e>", ":Neotree reveal<Enter>", silent = true },
 	},
 
 	config = function()
@@ -44,7 +44,7 @@ return {
 					width = 35,
 
 					popup = {
-						size = { height = "30", width = "78" },
+						size = { height = 0.8, width = 0.4 },
 						position = "50%",
 					},
 

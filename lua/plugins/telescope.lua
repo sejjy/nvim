@@ -15,15 +15,15 @@ return {
 	config = function()
 		-- ability to focus with cursor on the preview window #2778
 		local focus_preview = function(prompt_bufnr)
-			local action_state = require("telescope.actions.state")
-			local picker = action_state.get_current_picker(prompt_bufnr)
-			local prompt_win = picker.prompt_win
-			local previewer = picker.previewer
-			local winid = previewer.state.winid
-			local bufnr = previewer.state.bufnr
+			local action = require("telescope.actions.state")
+			local picker = action.get_current_picker(prompt_bufnr)
+			local prompt = picker.prompt_win
+			local prview = picker.previewer
+			local winid = prview.state.winid
+			local bufnr = prview.state.bufnr
 
 			vim.keymap.set("n", "<Tab>", function()
-				vim.cmd(string.format("noautocmd lua vim.api.nvim_set_current_win(%s)", prompt_win))
+				vim.cmd(string.format("noautocmd lua vim.api.nvim_set_current_win(%s)", prompt))
 			end, { buffer = bufnr })
 
 			vim.cmd(string.format("noautocmd lua vim.api.nvim_set_current_win(%s)", winid))
