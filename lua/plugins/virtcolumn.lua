@@ -4,35 +4,24 @@ return {
 	event = "VeryLazy",
 
 	config = function()
-		local state = {
-			enabled = false,
-			column = "80",
-		}
-
 		local function toggle_colorcolumn()
-			if state.enabled then
-				vim.wo.colorcolumn = ""
-				state.enabled = false
+			if vim.wo.colorcolumn == "" then
+				vim.wo.colorcolumn = "80"
 			else
-				vim.wo.colorcolumn = state.column
-				state.enabled = true
+				vim.wo.colorcolumn = ""
 			end
 		end
 
 		vim.api.nvim_create_autocmd("InsertEnter", {
 			callback = function()
-				if state.enabled then
-					vim.w._virt_column_saved = vim.wo.colorcolumn
-					vim.wo.colorcolumn = ""
-				end
+				vim.w.saved_colorcolumn = vim.wo.colorcolumn
+				vim.wo.colorcolumn = ""
 			end,
 		})
 
 		vim.api.nvim_create_autocmd("InsertLeave", {
 			callback = function()
-				if state.enabled then
-					vim.wo.colorcolumn = vim.w._virt_column_saved or state.column
-				end
+				vim.wo.colorcolumn = vim.w.saved_colorcolumn or ""
 			end,
 		})
 
