@@ -6,7 +6,7 @@ return {
 		local css = ""
 		local gear = ""
 		local info = "󰋽"
-		local license = "󰿃"
+		local license = ""
 		local secret = ""
 
 		local cyan = "MiniIconsCyan"
