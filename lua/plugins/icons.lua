@@ -57,6 +57,7 @@ return {
 				csv = { glyph = "󱎏", hl = green },
 				editorconfig = { glyph = gear },
 				html = { glyph = "󰗀" },
+				man = { glyph = "󱗖" },
 				rasi = { glyph = css, hl = purple },
 				sh = { glyph = bash, hl = green },
 				tmux = { glyph = gear },
