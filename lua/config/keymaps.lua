@@ -39,6 +39,13 @@ vim.keymap.set("n", "x", '"_x')
 vim.keymap.set("x", "<Leader>p", '"_dP', { desc = "[p]aste" })
 vim.keymap.set({ "n", "v" }, "<Leader>d", '"_d', { desc = "[d]elete" })
 
+-- format buffer
+vim.keymap.set("n", "<Leader>=", function()
+	local view = vim.fn.winsaveview()
+	vim.cmd("normal! gg=G")
+	vim.fn.winrestview(view)
+end, { desc = "format buffer" })
+
 -- diagnostics
 vim.keymap.set("n", "<Leader>q", vim.diagnostic.setloclist, { desc = "diagnostic [q]uickfix" })
 
