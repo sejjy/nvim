@@ -39,31 +39,22 @@ vim.keymap.set("n", "x", '"_x')
 vim.keymap.set("x", "<Leader>p", '"_dP', { desc = "[p]aste" })
 vim.keymap.set({ "n", "v" }, "<Leader>d", '"_d', { desc = "[d]elete" })
 
+vim.keymap.set({ "n", "v" }, "+", "<C-a>") -- increment
+vim.keymap.set({ "n", "v" }, "-", "<C-x>") -- decrement
+vim.keymap.set({ "n", "v" }, "J", "mzJ`z") -- join without moving cursor
+
+-- spell check
+vim.keymap.set("n", "<Leader>cs", ":set spell!<CR>", { noremap = true, silent = true, desc = "check [s]pelling" })
+
+-- diagnostics
+vim.keymap.set("n", "<Leader>q", vim.diagnostic.setloclist, { desc = "diagnostic [q]uickfix" })
+
 -- format buffer
 vim.keymap.set("n", "<Leader>=", function()
 	local view = vim.fn.winsaveview()
 	vim.cmd("normal! gg=G")
 	vim.fn.winrestview(view)
 end, { desc = "format buffer" })
-
--- diagnostics
-vim.keymap.set("n", "<Leader>q", vim.diagnostic.setloclist, { desc = "diagnostic [q]uickfix" })
-
--- replace all
-vim.keymap.set("n", "<Leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "replace all" })
-
--- disable search highlights
-vim.keymap.set("n", "<Esc>", ":nohlsearch<Enter>", { silent = true })
-
--- `npm run format`
-vim.keymap.set("n", "<Leader>nf", ":!npm run format<Enter>", { silent = true, desc = "[n]pm run [f]ormat" })
-
--- `chmod +x`
-vim.keymap.set("n", "<Leader>x", ":!chmod +x %<Enter>", { silent = true, desc = "chmod +[x]" })
-
-vim.keymap.set({ "n", "v" }, "+", "<C-a>") -- increment
-vim.keymap.set({ "n", "v" }, "-", "<C-x>") -- decrement
-vim.keymap.set({ "n", "v" }, "J", "mzJ`z") -- join without moving cursor
 
 -- goto opening pair
 vim.keymap.set({ "n", "x" }, ")", function()
@@ -74,3 +65,15 @@ end)
 vim.keymap.set({ "n", "x" }, "(", function()
 	vim.fn.search("[]'\")}>]", "bW")
 end)
+
+-- disable search highlights
+vim.keymap.set("n", "<Esc>", ":nohlsearch<Enter>", { silent = true })
+
+-- replace all
+vim.keymap.set("n", "<Leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "replace all" })
+
+-- `npm run format`
+vim.keymap.set("n", "<Leader>nf", ":!npm run format<Enter>", { silent = true, desc = "[n]pm run [f]ormat" })
+
+-- `chmod +x`
+vim.keymap.set("n", "<Leader>x", ":!chmod +x %<Enter>", { silent = true, desc = "chmod +[x]" })
