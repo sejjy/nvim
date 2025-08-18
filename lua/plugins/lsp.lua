@@ -14,6 +14,7 @@ return {
 			"cssls",
 			"emmet_language_server",
 			"html",
+			"intelephense",
 			"jsonls",
 			"lua_ls",
 			"tailwindcss",
