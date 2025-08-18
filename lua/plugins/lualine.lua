@@ -16,7 +16,7 @@ return {
 
 		local mocha = require("catppuccin.palettes").get_palette("mocha")
 
-		local inner = "·"
+		local inner = ""
 		local iconl = ""
 		local iconr = ""
 		local trfmt = trunc(0, 0, 75, true)
@@ -99,7 +99,7 @@ return {
 						icon = "",
 						separator = "",
 						padding = { left = 0, right = 1 },
-						symbols = { spinner = spinner, done = "", separator = " " .. inner .. " " },
+						symbols = { spinner = spinner, done = "", separator = ", " },
 						fmt = trfmt,
 					},
 				},

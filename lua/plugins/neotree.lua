@@ -44,7 +44,7 @@ return {
 					width = 35,
 
 					popup = {
-						size = { height = 0.8, width = 0.4 },
+						size = { height = 0.8, width = 0.3 },
 						position = "50%",
 					},
 
