@@ -44,7 +44,7 @@ return {
 					width = 35,
 
 					popup = {
-						size = { height = 0.8, width = 0.3 },
+						size = { height = 0.8, width = 45 },
 						position = "50%",
 					},
 
@@ -104,9 +104,5 @@ return {
 				},
 			},
 		})
-
-		local mocha = require("catppuccin.palettes").get_palette("mocha")
-
-		vim.api.nvim_set_hl(0, "NeoTreeFloatTitle", { fg = mocha.blue })
 	end,
 }

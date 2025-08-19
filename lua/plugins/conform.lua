@@ -19,6 +19,7 @@ return {
 			html = { "prettierd" },
 			javascript = { "prettierd" },
 			lua = { "stylua" },
+			markdown = { "prettierd" },
 			python = { "ruff" },
 			sh = { "shfmt" },
 		},

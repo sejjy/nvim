@@ -6,10 +6,6 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-ui-select.nvim",
-		{
-			"nvim-telescope/telescope-fzf-native.nvim",
-			build = "make",
-		},
 	},
 
 	config = function()
@@ -56,7 +52,12 @@ return {
 			},
 
 			pickers = {
-				find_files = { find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" } },
+				find_files = {
+					hidden = true,
+					find_command = {
+						"rg", "--files", "--hidden", "--glob", "!**/.git/*",
+					},
+				},
 				buffers = {
 					mappings = {
 						i = { ["<C-d>"] = actions.delete_buffer + actions.move_to_top },
@@ -75,7 +76,6 @@ return {
 		})
 
 		-- telescope extensions
-		pcall(require("telescope").load_extension, "fzf")
 		pcall(require("telescope").load_extension, "ui-select")
 
 		local builtin = require("telescope.builtin")
@@ -94,14 +94,6 @@ return {
 		vim.keymap.set("n", "<Leader>s.", builtin.oldfiles, tdesc("recent files"))
 
 		vim.keymap.set("n", "<Leader><leader>", builtin.buffers, tdesc("open buffers"))
-
-		vim.keymap.set("n", "<Leader>/", function()
-			builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-				previewer = false,
-				borderchars = borders,
-				prompt_title = "Fuzzy Find in Buffer",
-			}))
-		end, tdesc("in buffer"))
 
 		vim.keymap.set("n", "<Leader>s/", function()
 			builtin.live_grep({

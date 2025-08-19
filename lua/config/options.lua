@@ -40,6 +40,7 @@ vim.opt.timeoutlen = 250
 vim.opt.updatetime = 250
 
 -- others
+vim.opt.wrap = false
 vim.opt.mouse = ""
 vim.opt.showmode = false
 vim.opt.undofile = true
