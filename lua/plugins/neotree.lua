@@ -6,7 +6,7 @@ return {
 	dependencies = { "MunifTanjim/nui.nvim" },
 
 	keys = {
-		{ "<A-e>", ":Neotree reveal<Enter>", silent = true },
+		{ "<Leader>e" },
 	},
 
 	config = function()
@@ -49,9 +49,7 @@ return {
 					},
 
 					mappings = {
-						["<A-e>"] = "close_window",
-						["P"] = "",
-						["<A-p>"] = { "toggle_preview", config = { use_float = true } },
+						["P"] = { "toggle_preview", config = { use_float = true } },
 						["<esc>"] = "",
 						["<Esc>"] = "close_window",
 						["[g"] = "",

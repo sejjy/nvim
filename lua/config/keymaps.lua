@@ -5,8 +5,8 @@ vim.keymap.set("n", "<Left>", "<Nop>")
 vim.keymap.set("n", "<Right>", "<Nop>")
 
 -- switch buffers
-vim.keymap.set("n", "<A-n>", ":bnext<Enter>")
-vim.keymap.set("n", "<A-p>", ":bprevious<Enter>")
+vim.keymap.set("n", "<C-n>", ":bnext<Enter>")
+vim.keymap.set("n", "<C-p>", ":bprevious<Enter>")
 
 -- switch windows
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>")
@@ -25,8 +25,8 @@ vim.keymap.set("n", "<Tab>", ":tabnext<Enter>")
 vim.keymap.set("n", "<S-Tab>", ":tabprev<Enter>")
 
 -- move lines
-vim.keymap.set("n", "<A-k>", ":m .-2<Enter>==")
-vim.keymap.set("n", "<A-j>", ":m .+1<Enter>==")
+-- vim.keymap.set("n", "<A-k>", ":m .-2<Enter>==")
+-- vim.keymap.set("n", "<A-j>", ":m .+1<Enter>==")
 vim.keymap.set("v", "<A-k>", ":m '<-2<Enter>gv=gv")
 vim.keymap.set("v", "<A-j>", ":m '>+1<Enter>gv=gv")
 
@@ -47,14 +47,14 @@ vim.keymap.set({ "n", "v" }, "J", "mzJ`z") -- join without moving cursor
 vim.keymap.set("n", "<Leader>cs", ":set spell!<CR>", { noremap = true, silent = true, desc = "check [s]pelling" })
 
 -- diagnostics
-vim.keymap.set("n", "<Leader>q", vim.diagnostic.setloclist, { desc = "diagnostic [q]uickfix" })
+vim.keymap.set("n", "<Leader>q", vim.diagnostic.setloclist, { desc = "[q]uickfix list" })
 
 -- format buffer
 vim.keymap.set("n", "<Leader>=", function()
 	local view = vim.fn.winsaveview()
 	vim.cmd("normal! gg=G")
 	vim.fn.winrestview(view)
-end, { desc = "format buffer" })
+end, { desc = "indent" })
 
 -- goto opening pair
 vim.keymap.set({ "n", "x" }, ")", function()
@@ -73,7 +73,10 @@ vim.keymap.set("n", "<Esc>", ":nohlsearch<Enter>", { silent = true })
 vim.keymap.set("n", "<Leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "replace all" })
 
 -- `npm run format`
-vim.keymap.set("n", "<Leader>nf", ":!npm run format<Enter>", { silent = true, desc = "[n]pm run [f]ormat" })
+vim.keymap.set("n", "<Leader>nf", ":!npm run format<Enter>", { silent = true, desc = "npm run [f]ormat" })
 
 -- `chmod +x`
 vim.keymap.set("n", "<Leader>x", ":!chmod +x %<Enter>", { silent = true, desc = "chmod +[x]" })
+
+-- display desc on lazy load
+vim.keymap.set("n", "<Leader>e", ":Neotree reveal<Enter>", { silent = true, desc = "[e]xplorer" })
