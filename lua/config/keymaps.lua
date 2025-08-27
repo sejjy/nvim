@@ -77,6 +77,3 @@ vim.keymap.set("n", "<Leader>nf", ":!npm run format<Enter>", { silent = true, de
 
 -- `chmod +x`
 vim.keymap.set("n", "<Leader>x", ":!chmod +x %<Enter>", { silent = true, desc = "chmod +[x]" })
-
--- display desc on lazy load
-vim.keymap.set("n", "<Leader>e", ":Neotree reveal<Enter>", { silent = true, desc = "[e]xplorer" })
