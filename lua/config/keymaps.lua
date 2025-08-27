@@ -47,7 +47,7 @@ vim.keymap.set({ "n", "v" }, "J", "mzJ`z") -- join without moving cursor
 vim.keymap.set("n", "<Leader>cs", ":set spell!<CR>", { noremap = true, silent = true, desc = "check [s]pelling" })
 
 -- diagnostics
-vim.keymap.set("n", "<Leader>q", vim.diagnostic.setloclist, { desc = "[q]uickfix list" })
+vim.keymap.set("n", "<Leader>q", vim.diagnostic.setloclist, { desc = "[q]uickfix diagnostics" })
 
 -- format buffer
 vim.keymap.set("n", "<Leader>=", function()

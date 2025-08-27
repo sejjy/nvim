@@ -87,12 +87,12 @@ return {
 
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+		capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities({}, false))
 
 		-- 0.11 fix
-		for server, srv in pairs(servers) do
-			srv.capabilities = vim.tbl_deep_extend("force", {}, capabilities, srv.capabilities or {})
-			vim.lsp.config(server, srv)
+		for server, config in pairs(servers) do
+			config.capabilities = vim.tbl_deep_extend("force", {}, capabilities, config.capabilities or {})
+			vim.lsp.config(server, config)
 		end
 	end,
 }
