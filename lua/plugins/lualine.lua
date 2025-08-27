@@ -14,30 +14,23 @@ return {
 			end
 		end
 
-		local mocha = require("catppuccin.palettes").get_palette("mocha")
+		local ldiv, rdiv, idiv = "", "", ""
+		local spin = { "|", "/", "—", "\\" }
+		local trun = trunc(0, 0, 75, true)
 
-		local inner = ""
-		local iconl = ""
-		local iconr = ""
-		local trfmt = trunc(0, 0, 75, true)
-		local spinner = { "|", "/", "—", "\\" }
+		local mocha = require("catppuccin.palettes").get_palette("mocha")
 
 		require("lualine").setup({
 			options = {
-				-- globalstatus = true,
-				component_separators = inner .. " ",
-				section_separators = { left = iconr, right = iconl },
-
-				disabled_filetypes = {
-					statusline = { "neo-tree" },
-				},
+				component_separators = idiv .. " ",
+				section_separators = { left = rdiv, right = ldiv },
 			},
 
 			sections = {
 				lualine_a = {
 					{
 						"mode",
-						separator = { left = iconl, right = iconr .. " " },
+						separator = { left = ldiv, right = rdiv .. " " },
 						fmt = trunc(75, 1, 0, true),
 					},
 				},
@@ -47,7 +40,7 @@ return {
 						"branch",
 						icon = "󰘬",
 						color = { fg = mocha.text },
-						separator = { left = "", right = iconr .. " " },
+						separator = { left = "", right = rdiv .. " " },
 						padding = { left = 0, right = 1 },
 					},
 				},
@@ -56,67 +49,48 @@ return {
 					{
 						"diff",
 						padding = { left = 0, right = 1 },
-						fmt = trfmt,
-
-						symbols = {
-							added = "+",
-							removed = "-",
-							modified = "~",
-						},
-
-						diff_color = {
-							modified = { fg = mocha.blue },
-						},
+						fmt = trun,
+						symbols = { added = "+", removed = "-", modified = "~" },
+						diff_color = { modified = { fg = mocha.blue } },
 					},
 					{
 						"filetype",
 						icon_only = true,
 						separator = "",
 						padding = { left = 0, right = 0 },
-						fmt = trfmt,
+						fmt = trun,
 					},
 					{
 						"filename",
 						padding = { left = 0, right = 0 },
 						fmt = trunc(50, 18, 0, false),
-
 						symbols = {
-							modified = "[+]", -- file is modified.
-							readonly = "[-]", -- file is non-modifiable or readonly.
-							unnamed = "[No Name]", -- unnamed buffers.
-							newfile = "[New]", -- newly created file before first write
+							modified = "[+]",
+							readonly = "[-]",
+							unnamed = "[No Name]",
+							newfile = "[New]",
 						},
 					},
 				},
 
 				lualine_x = {
-					{
-						"diagnostics",
-						separator = inner,
-					},
+					{ "diagnostics", separator = idiv },
 					{
 						"lsp_status",
 						icon = "",
 						separator = "",
 						padding = { left = 0, right = 1 },
-						symbols = { spinner = spinner, done = "", separator = ", " },
-						fmt = trfmt,
+						symbols = { spinner = spin, done = "", separator = ", " },
+						fmt = trun,
 					},
 				},
 
 				lualine_y = {
-					{
-						"filesize",
-						color = { fg = mocha.text },
-						fmt = trfmt,
-					},
+					{ "filesize", color = { fg = mocha.text }, fmt = trun },
 				},
 
 				lualine_z = {
-					{
-						"location",
-						separator = { left = iconl, right = iconr },
-					},
+					{ "location", separator = { left = ldiv, right = rdiv } },
 				},
 			},
 
@@ -128,8 +102,8 @@ return {
 					{
 						"lsp_status",
 						icon = "",
-						symbols = { spinner = spinner, done = "", separator = " " },
-						fmt = trfmt,
+						symbols = { spinner = spin, done = "", separator = " " },
+						fmt = trun,
 					},
 				},
 				lualine_y = {},

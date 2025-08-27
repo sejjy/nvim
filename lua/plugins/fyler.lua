@@ -1,32 +1,33 @@
 return {
 	"A7Lavinraj/fyler.nvim",
 
-	config = function()
-		require("fyler").setup({
-			views = {
-				explorer = {
-					default_explorer = true,
-					win = {
-						kind = "float",
-						kind_presets = {
-							float = {
-								width = "35abs",
-								height = "0.9rel",
-								left = "none",
-								right = "0abs",
-								top = "0abs",
-							},
+	keys = {
+		{ "<Leader>e", ":Fyler.nvim<Enter>", desc = "[e]xplorer" },
+	},
+
+	opts = {
+		views = {
+			explorer = {
+				default_explorer = true,
+				win = {
+					kind = "float",
+					kind_presets = {
+						float = {
+							width = "35abs",
+							height = "0.9rel",
+							left = "none",
+							right = "0abs",
+							top = "0abs",
 						},
 					},
-				},
-				mappings = {
-					explorer = {
-						["<Leader>e"] = "CloseView",
-					},
+					win_opts = { winhighlight = "Normal:NormalFloat" },
 				},
 			},
-		})
-
-		vim.keymap.set("n", "<Leader>e", ":Fyler<Enter>", { desc = "[e]xplorer" })
-	end,
+			mappings = {
+				explorer = {
+					["<Leader>e"] = "CloseView",
+				},
+			},
+		},
+	},
 }
