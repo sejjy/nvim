@@ -8,7 +8,7 @@ return {
 				if hide_width and win_width < hide_width then
 					return ""
 				elseif trunc_width and trunc_len and win_width < trunc_width and #str > trunc_len then
-					return str:sub(1, trunc_len) .. (no_ellipsis and "" or "...")
+					return str:sub(1, trunc_len) .. (no_ellipsis and "" or "…")
 				end
 				return str
 			end
@@ -16,22 +16,13 @@ return {
 
 		local mocha = require("catppuccin.palettes").get_palette("mocha")
 
-		local ldiv, rdiv, idiv = "", "", ""
-		local spin = { "|", "/", "—", "\\" }
-		local trun = trunc(0, 0, 75, true)
-
 		require("lualine").setup({
-			options = {
-				component_separators = idiv .. " ",
-				section_separators = { left = rdiv, right = ldiv },
-			},
-
 			sections = {
 				lualine_a = {
 					{
 						"mode",
-						separator = { left = ldiv, right = rdiv .. " " },
-						fmt = trunc(75, 1, 0, true),
+						separator = { left = "", right = " " },
+						fmt = trunc(80, 1, 0, true),
 					},
 				},
 
@@ -40,61 +31,66 @@ return {
 						"branch",
 						icon = "󰘬",
 						color = { fg = mocha.text },
-						separator = { left = "", right = rdiv .. " " },
 						padding = { left = 0, right = 1 },
+						separator = { right = " " },
 					},
 				},
 
 				lualine_c = {
 					{
 						"diff",
-						padding = { left = 0, right = 1 },
-						fmt = trun,
 						symbols = { added = "󰐗 ", removed = "󰍶 ", modified = "󰻂 " },
 						diff_color = { modified = { fg = mocha.blue } },
+						padding = { left = 0, right = 1 },
+						separator = " ",
+						fmt = trunc(0, 0, 120, true),
 					},
 					{
 						"filetype",
 						icon_only = true,
-						separator = "",
 						padding = { left = 0, right = 0 },
-						fmt = trun,
+						separator = "",
 					},
 					{
 						"filename",
-						padding = { left = 0, right = 0 },
-						fmt = trunc(50, 18, 0, false),
 						symbols = {
 							modified = "[+]",
 							readonly = "[-]",
-							unnamed = "[No Name]",
+							unnamed = "[Unnamed]",
 							newfile = "[New]",
 						},
+						padding = { left = 0 },
+						fmt = trunc(50, 18, 0, false),
 					},
 				},
 
 				lualine_x = {
 					{
 						"diagnostics",
-						separator = idiv,
 						symbols = { error = "󰅙 ", warn = "󰀦 ", info = "󰋼 ", hint = "󰋗 " },
+						separator = "",
+						fmt = trunc(0, 0, 120, true),
 					},
 					{
 						"lsp_status",
 						icon = "",
-						separator = "",
-						padding = { left = 0, right = 1 },
-						symbols = { spinner = spin, done = "", separator = ", " },
-						fmt = trun,
+						symbols = { spinner = "", done = "", separator = ", " },
+						padding = { right = 1 },
+						fmt = trunc(160, 20, 80, false),
 					},
 				},
 
 				lualine_y = {
-					{ "filesize", color = { fg = mocha.text }, fmt = trun },
+					{
+						"filesize",
+						color = { fg = mocha.text },
+						separator = { left = "" },
+						fmt = trunc(0, 0, 80, true),
+					},
 				},
 
 				lualine_z = {
-					{ "location", separator = { left = ldiv, right = rdiv } },
+					{ "location", separator = { left = "", right = "" } },
 				},
 			},
 
@@ -106,8 +102,8 @@ return {
 					{
 						"lsp_status",
 						icon = "",
-						symbols = { spinner = spin, done = "", separator = " " },
-						fmt = trun,
+						symbols = { spinner = "", done = "", separator = ", " },
+						fmt = trunc(0, 0, 80, true),
 					},
 				},
 				lualine_y = {},
