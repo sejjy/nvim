@@ -14,11 +14,11 @@ return {
 			end
 		end
 
+		local mocha = require("catppuccin.palettes").get_palette("mocha")
+
 		local ldiv, rdiv, idiv = "", "", ""
 		local spin = { "|", "/", "—", "\\" }
 		local trun = trunc(0, 0, 75, true)
-
-		local mocha = require("catppuccin.palettes").get_palette("mocha")
 
 		require("lualine").setup({
 			options = {
@@ -50,7 +50,7 @@ return {
 						"diff",
 						padding = { left = 0, right = 1 },
 						fmt = trun,
-						symbols = { added = "+", removed = "-", modified = "~" },
+						symbols = { added = "󰐗 ", removed = "󰍶 ", modified = "󰻂 " },
 						diff_color = { modified = { fg = mocha.blue } },
 					},
 					{
@@ -74,7 +74,11 @@ return {
 				},
 
 				lualine_x = {
-					{ "diagnostics", separator = idiv },
+					{
+						"diagnostics",
+						separator = idiv,
+						symbols = { error = "󰅙 ", warn = "󰀦 ", info = "󰋼 ", hint = "󰋗 " },
+					},
 					{
 						"lsp_status",
 						icon = "",
