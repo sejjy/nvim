@@ -7,9 +7,7 @@ return {
 		event = "VeryLazy",
 
 		config = function()
-			require("mini.ai").setup({
-				n_lines = 500,
-			})
+			require("mini.ai").setup({ n_lines = 500 })
 
 			require("mini.surround").setup({
 				mappings = {
@@ -30,38 +28,9 @@ return {
 		"nvim-mini/mini.icons",
 
 		config = function()
+			require("mini.icons").mock_nvim_web_devicons()
+
 			require("mini.icons").setup({
-				file = {
-					-- hidden
-					[".bashrc"] = { glyph = "" },
-					[".env"] = { glyph = "" },
-					[".env.example"] = { glyph = "" },
-					[".htaccess"] = { glyph = "" },
-					[".prettierrc"] = { glyph = "" },
-					[".zshrc"] = { glyph = "" },
-
-					artisan = { glyph = "󰫐", hl = "MiniIconsRed" },
-					["composer.lock"] = { glyph = "󰘦", hl = "MiniIconsYellow" },
-					["eslint.config.js"] = { glyph = "󰱺", hl = "MiniIconsPurple" },
-					["favicon.ico"] = { glyph = "", hl = "MiniIconsYellow" },
-					["init.lua"] = { glyph = "" },
-
-					LICENSE = { glyph = "", hl = "MiniIconsOrange" },
-					["LICENSE.md"] = { glyph = "", hl = "MiniIconsOrange" },
-					["LICENSE.txt"] = { glyph = "", hl = "MiniIconsOrange" },
-
-					["package.json"] = { glyph = "󰎙", hl = "MiniIconsGreen" },
-					["package-lock.json"] = { glyph = "", hl = "MiniIconsRed" },
-
-					README = { glyph = "󰋽", hl = "MiniIconsCyan" },
-					["README.md"] = { glyph = "󰋽", hl = "MiniIconsCyan" },
-					["README.txt"] = { glyph = "󰋽", hl = "MiniIconsCyan" },
-
-					["robots.txt"] = { glyph = "󱚠", hl = "MiniIconsPurple" },
-					["tsconfig.json"] = { glyph = "󰛦", hl = "MiniIconsBlue" },
-					["vite.config.ts"] = { glyph = "", hl = "MiniIconsPurple" },
-				},
-
 				filetype = {
 					awk = { glyph = "", hl = "MiniIconsGreen" },
 					bash = { glyph = "", hl = "MiniIconsGreen" },
@@ -77,10 +46,32 @@ return {
 					tmux = { glyph = "" },
 					zsh = { glyph = "", hl = "MiniIconsGreen" },
 				},
-			})
 
-			-- mock nvim-web-devicons to use mini.icons instead
-			require("mini.icons").mock_nvim_web_devicons()
+				file = {
+					[".bashrc"] = { glyph = "" },
+					[".env"] = { glyph = "" },
+					[".env.example"] = { glyph = "" },
+					[".htaccess"] = { glyph = "" },
+					[".prettierrc"] = { glyph = "" },
+					[".zshrc"] = { glyph = "" },
+					["artisan"] = { glyph = "󰫐", hl = "MiniIconsRed" },
+					["composer.lock"] = { glyph = "󰘦", hl = "MiniIconsYellow" },
+					["eslint.config.js"] = { glyph = "󰱺", hl = "MiniIconsPurple" },
+					["favicon.ico"] = { glyph = "", hl = "MiniIconsYellow" },
+					["init.lua"] = { glyph = "" },
+					["LICENSE"] = { glyph = "", hl = "MiniIconsOrange" },
+					["LICENSE.md"] = { glyph = "", hl = "MiniIconsOrange" },
+					["LICENSE.txt"] = { glyph = "", hl = "MiniIconsOrange" },
+					["package.json"] = { glyph = "󰎙", hl = "MiniIconsGreen" },
+					["package-lock.json"] = { glyph = "", hl = "MiniIconsRed" },
+					["README"] = { glyph = "󰋽", hl = "MiniIconsCyan" },
+					["README.md"] = { glyph = "󰋽", hl = "MiniIconsCyan" },
+					["README.txt"] = { glyph = "󰋽", hl = "MiniIconsCyan" },
+					["robots.txt"] = { glyph = "󱚠", hl = "MiniIconsPurple" },
+					["tsconfig.json"] = { glyph = "󰛦", hl = "MiniIconsBlue" },
+					["vite.config.ts"] = { glyph = "", hl = "MiniIconsPurple" },
+				},
+			})
 		end,
 	},
 }

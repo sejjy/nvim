@@ -10,7 +10,6 @@ return {
 			{ "<C-\\>", "<Cmd><C-u>TmuxNavigatePrevious<Enter>" },
 		},
 	},
-
 	{
 		"rmagatti/auto-session",
 

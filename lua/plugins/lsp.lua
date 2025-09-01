@@ -35,16 +35,12 @@ return {
 			lua_ls = {
 				settings = {
 					Lua = {
-						completion = {
-							callSnippet = "Replace",
-						},
+						completion = { callSnippet = "Replace" },
 						diagnostics = {
 							globals = { "vim" },
 							disable = { "missing-fields" },
 						},
-						runtime = {
-							version = "LuaJIT",
-						},
+						runtime = { version = "LuaJIT" },
 						workspace = {
 							checkThirdParty = false,
 							library = {
@@ -59,9 +55,7 @@ return {
 			},
 
 			cssls = {
-				settings = {
-					css = { validate = false },
-				},
+				settings = { css = { validate = false } },
 			},
 		}
 
@@ -77,16 +71,10 @@ return {
 			},
 		})
 
-		require("mason-lspconfig").setup({
-			ensure_installed = mason_servers,
-		})
-
-		require("mason-tool-installer").setup({
-			ensure_installed = mason_tools,
-		})
+		require("mason-lspconfig").setup({ ensure_installed = mason_servers })
+		require("mason-tool-installer").setup({ ensure_installed = mason_tools })
 
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
-
 		capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities({}, false))
 
 		-- 0.11 fix

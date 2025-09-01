@@ -7,7 +7,6 @@ return {
 			function()
 				require("conform").format({ async = true })
 			end,
-			mode = "",
 			desc = "[f]ormat",
 		},
 	},
@@ -24,14 +23,10 @@ return {
 			sh = { "shfmt" },
 		},
 
-		default_format_opts = {
-			lsp_format = "fallback",
-		},
+		default_format_opts = { lsp_format = "fallback" },
 
 		formatters = {
-			shfmt = {
-				prepend_args = { "--indent", "0" },
-			},
+			shfmt = { prepend_args = { "--indent", "0" } },
 		},
 	},
 

@@ -8,9 +8,7 @@ return {
 	config = function()
 		require("catppuccin").setup({
 			flavour = "mocha",
-			styles = {
-				comments = {},
-			},
+			styles = { comments = {} },
 		})
 
 		vim.cmd.colorscheme("catppuccin")

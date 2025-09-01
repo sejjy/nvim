@@ -4,13 +4,13 @@ return {
 	event = "VeryLazy",
 
 	spec = {
-		{ "<Leader>c", group = "[c]ode", mode = { "n", "x" } },
+		{ "<Leader>c", group = "[c]ode" },
 		{ "<Leader>d", group = "[d]ocument" },
 		{ "<Leader>r", group = "[r]ename" },
 		{ "<Leader>s", group = "[s]earch" },
 		{ "<Leader>t", group = "[t]oggle" },
 		{ "<Leader>w", group = "[w]orkspace" },
-		{ "<Leader>h", group = "[h]unk", mode = { "n", "v" } },
+		{ "<Leader>h", group = "[h]unk" },
 	},
 
 	opts = {

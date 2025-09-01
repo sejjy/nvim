@@ -2,9 +2,7 @@ vim.diagnostic.config({
 	float = { source = true },
 	severity_sort = true,
 	underline = true,
-	virtual_text = {
-		prefix = "",
-	},
+	virtual_text = { prefix = "" },
 	signs = {
 		numhl = {
 			[vim.diagnostic.severity.ERROR] = "ErrorMsg",
