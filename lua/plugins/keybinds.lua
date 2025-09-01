@@ -3,16 +3,6 @@ return {
 
 	event = "VeryLazy",
 
-	keys = {
-		{
-			"<Leader>?",
-			function()
-				require("which-key").show({ global = false })
-			end,
-			desc = "local keymaps",
-		},
-	},
-
 	spec = {
 		{ "<Leader>c", group = "[c]ode", mode = { "n", "x" } },
 		{ "<Leader>d", group = "[d]ocument" },

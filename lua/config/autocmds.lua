@@ -88,7 +88,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		})
 
 		-- lsp keymaps
-		local builtin = require("telescope.builtin")
+		local picker = require("snacks").picker
 		local function gdesc(desc)
 			return { desc = "LSP: goto " .. desc }
 		end
@@ -98,22 +98,22 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		-- goto
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, gdesc("[D]eclaration"))
-		vim.keymap.set("n", "gd", builtin.lsp_definitions, gdesc("[d]efinition"))
-		vim.keymap.set("n", "gr", builtin.lsp_references, gdesc("[r]eferences"))
-		vim.keymap.set("n", "gI", builtin.lsp_implementations, gdesc("[I]mplementation"))
+		vim.keymap.set("n", "gd", picker.lsp_definitions, gdesc("[d]efinition"))
+		vim.keymap.set("n", "gr", picker.lsp_references, gdesc("[r]eferences"))
+		vim.keymap.set("n", "gI", picker.lsp_implementations, gdesc("[I]mplementation"))
 
 		vim.keymap.set("n", "<Leader>rn", vim.lsp.buf.rename, ldesc("re[n]ame"))
-		vim.keymap.set("n", "<Leader>D", builtin.lsp_type_definitions, ldesc("type [D]efinition"))
-		vim.keymap.set("n", "<Leader>ds", builtin.lsp_document_symbols, ldesc("document [s]ymbols"))
-		vim.keymap.set("n", "<Leader>ws", builtin.lsp_dynamic_workspace_symbols, ldesc("workspace [s]ymbols"))
+		vim.keymap.set("n", "<Leader>D", picker.lsp_type_definitions, ldesc("type [D]efinition"))
+		vim.keymap.set("n", "<Leader>ds", picker.lsp_symbols, ldesc("document [s]ymbols"))
+		vim.keymap.set("n", "<Leader>ws", picker.lsp_workspace_symbols, ldesc("workspace [s]ymbols"))
+
+		vim.keymap.set("n", "K", vim.lsp.buf.hover, { silent = true })
+		vim.keymap.set({ "n", "x" }, "<Leader>ca", vim.lsp.buf.code_action, ldesc("code [a]ctions"))
 
 		vim.keymap.set("n", "<Leader>th", function()
 			local lsp_hint = { bufnr = bufnum }
 			vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(lsp_hint), lsp_hint)
 		end, ldesc("toggle inlay [h]ints"))
-
-		vim.keymap.set({ "n", "x" }, "<Leader>ca", vim.lsp.buf.code_action, ldesc("code [a]ction"))
-		vim.keymap.set("n", "K", vim.lsp.buf.hover, { silent = true })
 	end,
 })
 

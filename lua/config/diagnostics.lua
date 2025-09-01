@@ -39,3 +39,4 @@ local function toggle_diagnostics()
 end
 
 vim.keymap.set("n", "<Leader>td", toggle_diagnostics, { desc = "toggle [d]iagnostics" })
+vim.keymap.set("n", "<Leader>q", vim.diagnostic.setloclist, { desc = "[q]uickfix diagnostics" })

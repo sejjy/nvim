@@ -25,8 +25,6 @@ vim.keymap.set("n", "<Tab>", ":tabnext<Enter>")
 vim.keymap.set("n", "<S-Tab>", ":tabprev<Enter>")
 
 -- move lines
--- vim.keymap.set("n", "<A-k>", ":m .-2<Enter>==")
--- vim.keymap.set("n", "<A-j>", ":m .+1<Enter>==")
 vim.keymap.set("v", "<A-k>", ":m '<-2<Enter>gv=gv")
 vim.keymap.set("v", "<A-j>", ":m '>+1<Enter>gv=gv")
 
@@ -43,18 +41,11 @@ vim.keymap.set({ "n", "v" }, "+", "<C-a>") -- increment
 vim.keymap.set({ "n", "v" }, "-", "<C-x>") -- decrement
 vim.keymap.set({ "n", "v" }, "J", "mzJ`z") -- join without moving cursor
 
--- spell check
-vim.keymap.set("n", "<Leader>cs", ":set spell!<CR>", { noremap = true, silent = true, desc = "check [s]pelling" })
-
--- diagnostics
-vim.keymap.set("n", "<Leader>q", vim.diagnostic.setloclist, { desc = "[q]uickfix diagnostics" })
-
--- format buffer
 vim.keymap.set("n", "<Leader>=", function()
 	local view = vim.fn.winsaveview()
 	vim.cmd("normal! gg=G")
 	vim.fn.winrestview(view)
-end, { desc = "indent" })
+end, { desc = "indent buffer" })
 
 -- goto opening pair
 vim.keymap.set({ "n", "x" }, ")", function()
@@ -66,14 +57,9 @@ vim.keymap.set({ "n", "x" }, "(", function()
 	vim.fn.search("[]'\")}>]", "bW")
 end)
 
--- disable search highlights
 vim.keymap.set("n", "<Esc>", ":nohlsearch<Enter>", { silent = true })
+vim.keymap.set("n", "<Leader>cs", ":set spell!<CR>", { silent = true, desc = "check [s]pelling" })
+vim.keymap.set("n", "<Leader>ra", ":%s/<C-r><C-w>/<C-r><C-w>/gI<Left><Left><Left>", { desc = "replace [a]ll" })
 
--- replace all
-vim.keymap.set("n", "<Leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "replace all" })
-
--- `npm run format`
-vim.keymap.set("n", "<Leader>nf", ":!npm run format<Enter>", { silent = true, desc = "npm run [f]ormat" })
-
--- `chmod +x`
-vim.keymap.set("n", "<Leader>x", ":!chmod +x %<Enter>", { silent = true, desc = "chmod +[x]" })
+vim.keymap.set("n", "<Leader>cx", ":!chmod +x %<Enter>", { silent = true, desc = "chmod +[x]" })
+vim.keymap.set("n", "<Leader>rf", ":!npm run format<Enter>", { silent = true, desc = "npm run [f]ormat" })
