@@ -31,7 +31,7 @@ return {
 
 			sources = {
 				buffers = { current = false },
-				files = { cwd = vim.fn.stdpath("config") },
+				files = { hidden = true },
 				grep_word = {
 					search = function(prompt)
 						return " " .. prompt:word()
@@ -66,11 +66,14 @@ return {
 		vim.keymap.set("n", "<Leader>sh", picker.help, sdesc("[h]elp pages"))
 		vim.keymap.set("n", "<Leader>sk", picker.keymaps, sdesc("[k]eymaps"))
 		vim.keymap.set("n", "<Leader>sm", picker.man, sdesc("[m]an pages"))
-		vim.keymap.set("n", "<Leader>sn", picker.files, sdesc("[n]eovim files"))
 		vim.keymap.set("n", "<Leader>sr", picker.resume, { desc = "[r]esume search" })
 		vim.keymap.set("n", "<Leader>su", picker.undo, sdesc("[u]ndo history"))
 		vim.keymap.set("n", "<Leader>s.", picker.recent, sdesc("recent files"))
 
 		vim.keymap.set({ "n", "x" }, "<Leader>sw", picker.grep_word, { desc = "grep current [w]ord" })
+
+		vim.keymap.set("n", "<Leader>sn", function()
+			picker.files({ cwd = vim.fn.stdpath("config") })
+		end, sdesc("[n]eovim files"))
 	end,
 }
