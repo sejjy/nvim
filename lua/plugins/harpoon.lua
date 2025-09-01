@@ -5,7 +5,7 @@ return {
 
 	dependencies = { "nvim-lua/plenary.nvim" },
 
-	event = "VeryLazy",
+	keys = { { "<A-a>" }, { "<A-e>" }, { "<A-h>" }, { "<A-j>" }, { "<A-k>" }, { "<A-l>" }, { "<A-p>" }, { "<A-n>" } },
 
 	config = function()
 		local toggle_opts = {
