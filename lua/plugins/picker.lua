@@ -1,6 +1,8 @@
 return {
 	"folke/snacks.nvim",
 
+	priority = 1000,
+
 	opts = {
 		picker = {
 			prompt = " > ",
@@ -8,7 +10,7 @@ return {
 
 			icons = {
 				undo = { saved = "" },
-				ui = { selected = "", unselected = "" },
+				ui = { selected = " ", unselected = " " },
 			},
 
 			layout = {
@@ -32,7 +34,9 @@ return {
 			sources = {
 				buffers = { current = false },
 				files = { hidden = true },
+				grep = { hidden = true },
 				grep_word = {
+					hidden = true,
 					search = function(prompt)
 						return " " .. prompt:word()
 					end,
@@ -70,7 +74,7 @@ return {
 		vim.keymap.set("n", "<Leader>su", picker.undo, sdesc("[u]ndo history"))
 		vim.keymap.set("n", "<Leader>s.", picker.recent, sdesc("recent files"))
 
-		vim.keymap.set({ "n", "x" }, "<Leader>sw", picker.grep_word, { desc = "grep current [w]ord" })
+		vim.keymap.set({ "n", "x" }, "<Leader>sc", picker.grep_word, { desc = "grep [c]urrent word" })
 
 		vim.keymap.set("n", "<Leader>sn", function()
 			picker.files({ cwd = vim.fn.stdpath("config") })
