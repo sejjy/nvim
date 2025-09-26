@@ -2,7 +2,7 @@ return {
 	{
 		"nvim-mini/mini.nvim",
 
-		version = "*",
+		version = false,
 
 		event = "VeryLazy",
 
